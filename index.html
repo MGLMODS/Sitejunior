@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junnior Artz - Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #1a1a1a;
+      color: #eaeaea;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(90deg, #4b0000, #7a1e1e);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 3px solid #550000;
+      animation: slideDown 0.8s ease-out;
+    }
+    header img {
+      height: 120px;
+      max-width: 90%;
+      width: auto;
+      margin-bottom: 10px;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    nav ul li a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #ff4d4d;
+    }
+    .hero {
+      padding: 80px 20px;
+      text-align: center;
+      background: radial-gradient(circle, #7a1e1e 0%, #1a1a1a 100%);
+      animation: fadeIn 1.2s ease-in;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(45deg, #ff4d4d, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background-color: #8B0000;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #660000;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      animation: slideUp 1s ease-in;
+    }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: #ff4d4d;
+      margin-bottom: 30px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .gallery-item {
+      position: relative;
+    }
+    .gallery img, .gallery video {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover, .gallery video:hover {
+      transform: scale(1.05);
+    }
+    .price-tag {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(139,0,0,0.8);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    footer {
+      background: #4b0000;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+    @keyframes slideDown {
+      0% { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes slideUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+  <script>
+    function showPixModal(value, description) {
+      const chave = '75991470534';
+      const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=00020126330014BR.GOV.BCB.PIX0111759914705345204000053039865406${value.toFixed(2)}5802BR5920Junnior%20Artz%20Site6009SAO%20PAULO62100506Site`; 
+      const modalHTML = `
+        <div id='pix-modal' style='position:fixed;top:0;left:0;width:100%;height:100%;background:#000a;display:flex;align-items:center;justify-content:center;z-index:9999;'>
+          <div style='background:#1a1a1a;padding:20px;border-radius:10px;text-align:center;color:#fff;max-width:300px;width:90%;'>
+            <h3>${description}</h3>
+            <img src='${pixURL}' alt='QR Code Pix' style='margin:15px 0;'>
+            <p style='font-size:14px;word-break:break-all;'>Chave Pix:<br><strong>${chave}</strong></p>
+            <button onclick="document.getElementById('pix-modal').remove()" style='margin-top:15px;padding:10px 20px;background:#8B0000;color:#fff;border:none;border-radius:5px;'>Fechar</button>
+          </div>
+        </div>`;
+      document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="imagens/logo.png" alt="Junnior Artz Logo" />
+    <nav>
+      <ul>
+        <li><a href="#estaticas">Artes Estáticas</a></li>
+        <li><a href="#animadas">Artes Animadas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Bem-vindo ao Portfólio de Junnior Artz</h1>
+    <p>Explore artes estáticas e animações criadas com paixão e criatividade</p>
+    <a class="btn" href="#estaticas">Ver Artes</a>
+  </section>
+
+  <section id="estaticas">
+    <h2>Artes Estáticas - R$20 cada</h2>
+    <div class="gallery">
+      <div class="gallery-item"><img src="imagens/artE1.png" alt="Arte Estática 1"><div class="price-tag">R$20</div></div>
+      <div class="gallery-item"><img src="imagens/artE2.png" alt="Arte Estática 2"><div class="price-tag">R$20</div></div>
+      <div class="gallery-item"><img src="imagens/artE3.png" alt="Arte Estática 3"><div class="price-tag">R$20</div></div>
+      <div class="gallery-item"><img src="imagens/artE4.png" alt="Arte Estática 4"><div class="price-tag">R$20</div></div>
+      <div class="gallery-item"><img src="imagens/artE5.png" alt="Arte Estática 5"><div class="price-tag">R$20</div></div>
+    </div>
+  </section>
+
+  <section id="animadas">
+    <h2>Arte Animada - R$40</h2>
+    <div class="gallery">
+      <video src="imagens/artA1.mp4" controls poster="imagens/artA1-poster.jpg"></video>
+    </div>
+  </section>
+
+  <section style="padding: 40px 20px; text-align: center; font-size: 16px;">
+    <p><strong>Aviso:</strong> Após o pagamento, envie o comprovante e a arte desejada para o número <strong>75991470534</strong> via WhatsApp, junto com a foto do comprovante.</p>
+    <div class="gallery-item">
+      <button class="btn" style="margin-top:10px;" onclick="showPixModal(40, 'Arte Animada - R$40')">Pagar com Pix</button>
+    </div>
+  </section>
+
+  <section style="text-align: center; padding: 30px;">
+    <h2>Fale Comigo:</h2>
+    <p>WhatsApp: <a href="https://wa.me/75991470534?text=Opa+Junnior,+Gostaria+que+minha+arte+fosse+...">Meu Telefone</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 - Modder: HarryModz. Todos os direitos reservados para Junnior artz.</p>
+  </footer>
+</body>
+</html>
