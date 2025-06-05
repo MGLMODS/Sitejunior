@@ -135,22 +135,23 @@
       100% { transform: translateY(0); opacity: 1; }
     }
   </style>
-  <script>
-    function showPixModal(value, description) {
-      const chave = '75991470534';
-      const pixURL = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=00020126330014BR.GOV.BCB.PIX0111759914705345204000053039865406${value.toFixed(2)}5802BR5920Junnior%20Artz%20Site6009SAO%20PAULO62100506Site`; 
-      const modalHTML = `
-        <div id='pix-modal' style='position:fixed;top:0;left:0;width:100%;height:100%;background:#000a;display:flex;align-items:center;justify-content:center;z-index:9999;'>
-          <div style='background:#1a1a1a;padding:20px;border-radius:10px;text-align:center;color:#fff;max-width:300px;width:90%;'>
-            <h3>${description}</h3>
-            <img src='${pixURL}' alt='QR Code Pix' style='margin:15px 0;'>
-            <p style='font-size:14px;word-break:break-all;'>Chave Pix:<br><strong>${chave}</strong></p>
-            <button onclick="document.getElementById('pix-modal').remove()" style='margin-top:15px;padding:10px 20px;background:#8B0000;color:#fff;border:none;border-radius:5px;'>Fechar</button>
-          </div>
-        </div>`;
-      document.body.insertAdjacentHTML('beforeend', modalHTML);
-    }
-  </script>
+  
+
+<script>
+  function showPixImageModal(description, imageUrl) {
+    const modalHTML = `
+      <div id='pix-modal-img' style='position:fixed;top:0;left:0;width:100%;height:100%;background:#000a;display:flex;align-items:center;justify-content:center;z-index:9999;'>
+        <div style='background:#1a1a1a;padding:20px;border-radius:10px;text-align:center;color:#fff;max-width:300px;width:90%;'>
+          <h3>\${description}</h3>
+          <img src='\${imageUrl}' alt='QR Code Pix' style='margin:15px 0;max-width:100%;'>
+          <p style='font-size:14px;'>Escaneie o QR Code com seu app de banco para pagar.</p>
+          <button onclick="document.getElementById('pix-modal-img').remove()" style='margin-top:15px;padding:10px 20px;background:#8B0000;color:#fff;border:none;border-radius:5px;'>Fechar</button>
+        </div>
+      </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+  }
+</script>
+
 </head>
 <body>
   <header>
@@ -174,7 +175,6 @@
     <div class="gallery">
       <div class="gallery-item"><img src="imagens/artE1.png" alt="Arte Estática 1"><div class="price-tag">R$20</div></div>
       <div class="gallery-item"><img src="imagens/artE2.png" alt="Arte Estática 2"><div class="price-tag">R$20</div></div>
-      <div class="gallery-item"><img src="imagens/artE3.png" alt="Arte Estática 3"><div class="price-tag">R$20</div></div>
       <div class="gallery-item"><img src="imagens/artE4.png" alt="Arte Estática 4"><div class="price-tag">R$20</div></div>
       <div class="gallery-item"><img src="imagens/artE5.png" alt="Arte Estática 5"><div class="price-tag">R$20</div></div>
     </div>
@@ -183,14 +183,21 @@
   <section id="animadas">
     <h2>Arte Animada - R$40</h2>
     <div class="gallery">
-      <video src="imagens/artA1.mp4" controls poster="imagens/artA1-poster.jpg"></video>
+      
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/Hhw_cNGGN9g?si=jy-RFQFkGHiPVQZo" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+allowfullscreen></iframe>
+
     </div>
   </section>
 
   <section style="padding: 40px 20px; text-align: center; font-size: 16px;">
     <p><strong>Aviso:</strong> Após o pagamento, envie o comprovante e a arte desejada para o número <strong>75991470534</strong> via WhatsApp, junto com a foto do comprovante.</p>
     <div class="gallery-item">
-      <button class="btn" style="margin-top:10px;" onclick="showPixModal(40, 'Arte Animada - R$40')">Pagar com Pix</button>
+      
+      <button class="btn" style="margin-top:10px;" onclick="showPixImageModal('Arte Animada - R$40', 'imagens/pix1.png')">Pagar com Pix (Imagem 1)</button>
+      <button class="btn" style="margin-top:10px;" onclick="showPixImageModal('Arte Animada - R$40', 'imagens/pix2.png')">Pagar com Pix (Imagem 2)</button>
+
     </div>
   </section>
 
